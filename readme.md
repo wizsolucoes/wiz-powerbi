@@ -17,7 +17,7 @@ Wiz powerBi é um componente para embedar os relatórios do powerBi no seu proje
 
 
 ### Componente html
-  ```html
+```html
   <wiz-powerbi
 	embed-url=""
 	id-pbi=""

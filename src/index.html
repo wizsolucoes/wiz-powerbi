@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Component Powerbi embed</title>
+
+  <script type="module" src="/build/wiz-powerbi.esm.js"></script>
+  <script nomodule src="/build/wiz-powerbi.js"></script>
+  <style>
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+    wiz-powerbi {
+      height: 800px;
+      width: 80vw;
+    }
+  </style>
+
+</head>
+<body>
+  <wiz-powerbi
+    embed-url="https://app.powerbi.com/reportEmbed?reportId=f6bfd646-b718-44dc-a378-b73e6b528204&groupId=be8908da-da25-452e-b220-163f52476cdd&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVVTLU5PUlRILUNFTlRSQUwtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQiLCJlbWJlZEZlYXR1cmVzIjp7Im1vZGVybkVtYmVkIjp0cnVlfX0%3d"
+    id-pbi="f6bfd646-b718-44dc-a378-b73e6b528204"
+    max-mobile-size="800"
+    token="H4sIAAAAAAAEACVWx6rFirX7lzt1wL0FMnDvvXvm3rZ7d3j__g5kLhBL0hL67z929v7mrPzn3_-A_C0KE8q00rpSPE95L1Frx3OdpdF8_hTlnJfIKKzIKzoCiVzW_oiXgfu-Qc-ahRNC5wcmIJxt0AtcALWHbtwNucmXXyKBYRdLYPeySS1T9o4-zXtxYJzZ0u67GtUUNPpWN5OT-rU_ZRxG9OJgLM34sj1-b9fbhjBOXqNr5-42kT-PJ1weaN_jn4Iw-1ilomwfly9oFfFmdgX5GSWQ9c4JzYNPAAnmDilTPVHb5IHfQKzdMOi7KB_Kx5mB7wKmUcWOu-C9vsx2AGBCgTs7_q3bVq81F2JRk03E-IPQ0TwwzVqktzsaL28SOFvzJu_JEMq2QHWm7W9gikXPQmg9PE3qcEc0-tcsTXFcH1zbgFsEzoA0Lgz-EZ0rVUXpj-6iOO2sJvcZ1IJ7sIhDmSuk0ZLTqsjsE-bKtaEY7C_-46DmnTe43rMime7F54uhw3XZwrDYjkU4q0eTeD7-9ThQ8mDQtD3_d59k4NHR4HzVcEYyxz0qnMP9yk6f9T11U5GGvm9f2wde6BiMl1WN6fv8S6AUCqqJINko_-QnkR-aq5NdUXiJQUOdrKZSYTLzAkjJiTTyInhVDoNazVzWVV4EcQ2r8abFo5cfDksQbukVfvG9nVimzrHBqHAJVTTGFnuUuH0xBwX9T43NjHYGac4Zihiq2nYItINz6XgpGj_Gslw7E_ii69fx33QKHuFcf9dv7h3WWqjspnAXyaGeSNJlsSqLT0ju92XTNxpqQx5IZOKHsykTEQNAJa9JUtfUzgCPGO2Sc3b18z4vZI3A0HIiHNj9tBYRpjv2wfWhYqtrGO5SDunxiVq3eIZZSUXshrYFf55EU4o3CBtPjLveEHeFBPE0AbiLqiqRhpFTt5FZCCyKW6YITAxNANM9lXEW54vPmQYexzVSApSjSYbEzQOLb-JCobhTwyJophpGXYoQy16LN7o1NPaLuH16fKhUkeqmw2hMvr9B5Q-m9NkB1bGUqAs3-XtjBiuSMkMGrVFIPl-JAa4aFfNvP1k6IMqDZYt1Dl6EhPhaHcrNyV3ZZe2YMImwE97ofrA_tfbi-NHHwkp74sewQ1vfsDFBVJduoD0bnNe1IWz95dktyNNoMngBqmBHXn2cWtQ0d35bOOk0ACkyXYjgTBAaqdzqNjw6gyDpz95OGwljC3jQiRq2lDypRW1209700CA_R6Pq5UEAeJTsMAJ0s-xcgoptebXMILixlzx_RmV0pp7QlApoQV-yfl1TBj4uxdQnWGFhrwWCH150L_qXQ7-cRb7j1ddqouxnrFVYya1W81wamaGn0Q3SwazwSs3J4bqEIRnl-5W-zm9Il8KpajgjMGyiTQ6ggH3a5EKN2ge8tV39Wx1rx8XNiTCkB7LLIVG2iphxbArEkMBBhvBiRSK26eP52tdVZD0UAklnHYLtuZEM1l584QR3TSlfN8ESsZo_r0o2eRpcnmziOJ4KeZCv3JuBU_qqJnJ7Jm4vNmEjWvRe6WORhpOI9MdepBFHzrtEkqFy2rIucC6bxGI2KK20dSHDgZsdfMg0LNjIds5uMo8dQjIRv7vwYHMLbLjCIH7qwjTBTrlJIY4Nq48FJqoInZVvX6oRmQ3d3Mqau6EGwxtpZdumOCucpK5yeIhLjVGd-XG2tXeMGnDFijqWnkB_BRzzZjjKlyTcka0mXXwZV2su_hzc0yPQPQ0RKtBOE3fNye7D7maZWlnZb_FRxMWVxxGJwKOg8mA08Mx6NqhfA2avpfk8UuJR3ymsj_xlgJDMsB2zckI33_kdd2SJcVppUI90hrTydFTiKCbk0VbFleUD7CBWtsO6ArhIqdOEnSKz9UDdM-KvrWKu8TIMmYtV-QzhJ5KUz-HSyGJkpooejXbr6lrbEFZx_1AwOwzxT-LZTkFFnwW-n8md7Y6bhi91cT8_-qkj9lrzfyzR3LBO_qkiWyrGZ4_JliQSYTHGSLekblae22CTreyE-YnC-FdRLI59fc9o8PARX_8XG8CD6jkfxe1sE-bop6InH18_QkNaOZiK5Nys2Ga9fyCeQSeGJYrTMLBJ47eqZrkWIZRxCZaMYRpyQnyf8yJg9IAvH0t38VZJJ2k6NhgY2O3mqfGRQn6LgHKZm4UYpL90fHdscScCzLbp14zaCc3y-raUx_znP__86x9ue5dj1qr3b2YYxXHoGa2_B3_9DiYM0GOiHASqstEezeldmW4AEkjrvNcsMhbhGV_i3qEP5DIBvKQzJUuiiikrxqClj23vAiYR77QrwpyiRLrOzIaqvFS-AH4itFRcZbbEQyJ1KW8yCQIeLLd5LmGhMsglr9LYMqDl7Ph56HCEr2CrjK8gS0dD-8Jw-0wW8twVOGIRTj9QPixcrt9uGJafBJ3CpirfqtcdAr3ORYS-8Fu6r4U8bnuDhspV-oFRnn_1PzlgteXNySv5pX7wGe-Frl4BU3c68BBMPE5mj3rg6CGy89y5wION4YjDLZBFLyxriCBr7DkrpMDDpF76uNoauzmLNa5GZLZ-2vxP5ndpq00J_1TeyJbstbCXu5TOfh2r5r3v_w_ldc2UHedW_cHmvP11rYnfc00xNvbjlsfx_wjnPcqbDqcNi2wjsCbQ8QT_xt7-27J7OTiYPrhxlp8PfW5pEjcHDvyQTtboHk6GFaE6-lW7RtLOhMimpjsnUjXKdP_efVjD1CoJOV-O5AGuuw202jHWeN1BUSxdjq6DH_FWrV2SnzL8kkdG6701GJlVNPw-vmhqkL_sQcE3UK4MBl4eDcJdMthnICl_RQnNafyOpTF6agIRq5ChyTVbu1KjWnRgaV3loa7GWm_Yym5CrP7rYaBpQQhrA2yQjsuVNEtnhOS8yW1iu1xneN8DCEnlVaR2s_vhfX2UYsS3-7mm9y_Nu-qV2O8i44SqoR46wfefzP_3_wvA8qRaCwAA"
+  >
+  </wiz-powerbi>
+
+</body>
+</html>
