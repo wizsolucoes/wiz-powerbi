@@ -1,7 +1,7 @@
 {
-  "name": "wiz-powerbi",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "name": "@wizsolucoes/wiz-powerbi",
+  "version": "1.0.0",
+  "description": "Wiz powerBi é um componente para embedar os relatórios do powerBi",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -10,6 +10,18 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/wiz-powerbi/wiz-powerbi.js",
+  "bugs": "https://github.com/wizsolucoes/wiz-powerbi/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wizsolucoes/wiz-powerbi"
+  },
+  "author": {
+    "name": "Raul Melo ",
+    "email": "raulmelo.web@gmail.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist/",
     "loader/"
