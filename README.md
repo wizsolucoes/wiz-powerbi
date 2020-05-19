@@ -13,11 +13,22 @@
 Wiz powerBi é um componente para embedar os relatórios do powerBi no seu projeto. Usamos Stencil para que possa ser usado com a maioria dos *frameworks* (React, vue e angular).
 
 ## Como usar 
-🚧 Em andamento...
+  
+  instala o pacote
+```
+npm i @wizsolucoes/wiz-powerbi
+```
+
+|Frameworks| Link|
+|--|--|
+|Angular| [Link](https://github.com/wizsolucoes/wiz-powerbi/wiki/Como-usar#passo-1---appmodulets)|
+|React | [Link](https://stenciljs.com/docs/react)|
+| Vue | [Link](https://stenciljs.com/docs/vue)|
+[outros](https://stenciljs.com/docs/overview)
 
 
 ### Componente html
-  ```html
+```html
   <wiz-powerbi
 	embed-url=""
 	id-pbi=""
