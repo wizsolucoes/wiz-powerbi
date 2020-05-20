@@ -37,78 +37,79 @@ export class WizPowerbi implements ComponentInterface {
   public contentPBI: HTMLElement;
   private embeddedElement: pbi.Embed;
 
-
-
-
-  // lyfe cicle stencil
-  componentWillLoad() {
-    this.initialEventPbi();
-  }
-
+  /// initial
   componentDidLoad() {
-    if (this.validateConfig(this.config)) {
-      this.embed(this.config);
-    }
+    this.loadPbi()
   }
-
+  /// Refresh params
+  componentWillUpdate() {
+    this.loadPbi()
+  }
 
   ///////////////////////
   // @Events components
   ///////////////////////
-  initialEventPbi() {
-    // const errors = pbi.models.validateReportLoad(config);
-    if (!this.token || !this.idPbi) {
-      return
+  loadPbi() {
+    if (this.validateConfig()) {
+      this.embed(this.config);
     }
-    this.config = this.getConfig()
+  }
+
+  ///////////////////////
+  // Validations
+  ///////////////////////
+  validateConfig() {
+    const config = this.getConfig()
+    const errors = pbi.models.validateReportLoad(config);
+    if (!this.token || !this.idPbi || !this.embedUrl) {
+      console.warn('required token, id and embedUrl')
+      return false
+    }
+    if (errors) {
+      console.log("config validation error", errors);
+    }
+    this.config = config
+    return errors === undefined;
   }
 
 
+
   // Prepare params config powerbi
- private getConfig() {
-   let newConfig: IEmbedConfiguration  = {
-     embedUrl: this.embedUrl,
-     id: this.idPbi,
-     accessToken: this.token,
-     tokenType: this.tokenType,
-     type: this.type,
-     settings: {
-       filterPaneEnabled: this.showFilterBar,
-       navContentPaneEnabled: this.showMenuButton
-     }
-   }
+  private getConfig() {
+    let newConfig: IEmbedConfiguration = {
+      embedUrl: this.embedUrl,
+      id: this.idPbi,
+      accessToken: this.token,
+      tokenType: this.tokenType,
+      type: this.type,
+      settings: {
+        filterPaneEnabled: this.showFilterBar,
+        navContentPaneEnabled: this.showMenuButton,
+        layoutType: 0
+      }
+    }
 
-   // has Filters
-   if (this.filters) {
-     const values = newConfig
-     newConfig = {
-       ...values,
-       filters: this.filters
-     }
-   }
+    // has Filters
+    if (this.filters) {
+      const values = newConfig
+      newConfig = {
+        ...values,
+        filters: this.filters
+      }
+    }
 
-   /// is Mobile
-   const bodySize = document.body.getBoundingClientRect().width;
-   if (this.maxMobileSize && bodySize >= this.maxMobileSize) {
-     newConfig.settings.layoutType = 1
-   }
-
-
-   return newConfig
- }
+    /// is Mobile
+    const bodySize = document.body.getBoundingClientRect().width;
+    if (this.maxMobileSize && bodySize >= this.maxMobileSize) {
+      newConfig.settings.layoutType = pbi.models.LayoutType.MobilePortrait
+    }
+    return newConfig
+  }
 
 
   ///////////////////////////////
   /// @events power-bi client
   ///////////////////////////////
-  validateConfig(config: IEmbedConfiguration ) {
-    const errors = pbi.models.validateReportLoad(config);
-    if (errors) {
-      console.log("config validation error", errors);
-    }
-    return errors === undefined;
-  }
-
   embed(config: IEmbedConfiguration) {
     this.embeddedElement = powerbi.embed(this.contentPBI, config);
     if (this.onEmbedded) {

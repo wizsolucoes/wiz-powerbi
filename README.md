@@ -29,13 +29,15 @@ npm i @wizsolucoes/wiz-powerbi
 
 ### Componente html
 ```html
-  <wiz-powerbi
-	embed-url=""
-	id-pbi=""
-	token=""
- >
+<wiz-powerbi
+ embed-url=""
+ id-pbi=""
+ token=""
+>
 </wiz-powerbi>
 ```
+> Obs: Se estiver trabalhando com algum _framework_ e seus parâmetros forem dinâmicos devem ser feitos em forma diferente dependendo do _framwork_ assista o vídeo abaixo para entender melhor.
+[Web Componentes atributos em framework](https://www.youtube.com/watch?v=sK1ODp0nDbM&feature=youtu.be&t=28m36s)
 
 Para testar o componente você pode usar esse o link abaixo e pegar os principais parâmetros para teste.
 
@@ -64,10 +66,11 @@ Para testar o componente você pode usar esse o link abaixo e pegar os principai
 | max-mobile-size 	| Não 	| Number	| 800	 | Carregar em modo mobile |
 
 
-Exemplo de aplicação de filtros 
+### filtros do powerbi
+O stencilJs por ser um web componente não recebe array ou objeto como parâmetro em sua tag no html, por isso devemos mandar da seguinte forma. 
 
 ```js
-const filter = [{
+const filters = [{
 	$schema:  "http://powerbi.com/product/schema#basic",
 	target: {
 		table:  "TABLE_EXAMPLE",
@@ -75,23 +78,21 @@ const filter = [{
 	},
 	operator:  "eq",
 	values: ['212'],
-	filterType:  1, // pbi.models.FilterType.BasicFilter,
-	requireSingleSelection:  true  // Limits selection of values to one.
+	filterType:  1,
+	requireSingleSelection:  true
 }]
+
+const myComponent = document.querySelector('wiz-powerbi');
+mycomponent.filters = filters
 ```
-  ```html
-  <wiz-powerbi
-	embed-url="..."
-	id-pbi="..."
-	token="..."
-	filters="filters"
-	max-mobile-size="768"
-	show-filter-bar="false"
-	show-menu-button="false"
-	
- >
-</wiz-powerbi>
-```
+
+> No React e Vue você pode usar o ref={} 
+
+> No angular você pode usar o @viewChild
+`@ViewChild("elementPowerbi", { static: true }) elementPowerbi: ElementRef;`
+
+
+***
 
 
 
