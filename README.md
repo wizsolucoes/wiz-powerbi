@@ -21,8 +21,8 @@ npm i @wizsolucoes/wiz-powerbi
 
 |Frameworks| Link|
 |--|--|
-|Angular| [Link](https://github.com/wizsolucoes/wiz-powerbi/wiki/Como-usar#passo-1---appmodulets)|
-|React | [Link](https://stenciljs.com/docs/react)|
+|Angular| [Link](https://github.com/wizsolucoes/wiz-powerbi/wiki/Como-usar-angular)|
+|React | [Link](https://github.com/wizsolucoes/wiz-powerbi/wiki/Como-usar-react|
 | Vue | [Link](https://stenciljs.com/docs/vue)|
 [outros](https://stenciljs.com/docs/overview)
 
