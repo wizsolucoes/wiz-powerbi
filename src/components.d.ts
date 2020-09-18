@@ -36,6 +36,7 @@ declare namespace LocalJSX {
         "filters"?: models.IFilter[];
         "idPbi"?: string;
         "maxMobileSize"?: number;
+        "onChangeStatus"?: (event: CustomEvent<string>) => void;
         "showFilterBar"?: boolean;
         "showMenuButton"?: boolean;
         "token"?: string;
