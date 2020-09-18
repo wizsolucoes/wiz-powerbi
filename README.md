@@ -94,6 +94,17 @@ mycomponent.filters = filters
 
 ***
 
+## Evento: ***changeStatus***
+Esse evento emite o status do powerbi, atualmente ele emite dois status
+| Parâmetro | Descrição | 
+| --- | --- | 
+| loaded | Emite esse evento para dizer que o powerbi esta carregando de acordo com os dados enviados. | 
+| rendered |  Emite esse evento para dizer que o powerbi carregou e já renderizou todos os dados. | 
+
+Exemplo: 
+`
+  <wiz-powerbi id="webComponent" changeStatus="myFunction($event)"></wiz-powerbi>
+` 
 
 
 ## :globe_with_meridians: Links importantes

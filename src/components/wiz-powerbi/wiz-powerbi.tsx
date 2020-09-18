@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Prop, State } from '@stencil/core';
+import { Component, ComponentInterface, h, Prop, State, Watch, Event, EventEmitter } from '@stencil/core';
 import pbi from "powerbi-client";
 
 import { models, IEmbedConfiguration } from "powerbi-client"
@@ -11,39 +11,57 @@ const powerbi = new pbi.service.Service(
 
 
 @Component({
-  tag: 'wiz-powerbi',
-  styleUrl: 'wiz-powerbi.css',
-  shadow: true
+  tag: "wiz-powerbi",
+  styleUrl: "wiz-powerbi.css",
+  shadow: true,
 })
 export class WizPowerbi implements ComponentInterface {
-
   // Principal
   @Prop() idPbi: string; // use id-pbi=""
   @Prop() token: string;
-  @Prop() embedUrl: string // use embed-url=""
+  @Prop() embedUrl: string; // use embed-url=""
 
   // Opcional
-  @Prop() tokenType: models.TokenType = 0
-  @Prop() type: string = 'report'
-  @Prop() showFilterBar: boolean = false
-  @Prop() showMenuButton: boolean = true
+  @Prop() tokenType: models.TokenType = 0;
+  @Prop() type: string = "report";
+  @Prop() showFilterBar: boolean = false;
+  @Prop() showMenuButton: boolean = true;
   @Prop() filters: models.IFilter[];
-  @Prop() maxMobileSize: number;
+  @Prop() maxMobileSize: number = 800;
 
   // State has change
-  @State() config: IEmbedConfiguration;
   @State() onEmbedded: (embeddedEl: any) => void;
+  // @State() config: IEmbedConfiguration = {};
+  @State() status: string = "";
+
+  // Events output
+  @Event() changeStatus: EventEmitter<string>;
 
   public contentPBI: HTMLElement;
   private embeddedElement: pbi.Embed;
 
   /// initial
   componentDidLoad() {
-    this.loadPbi()
+    this.loadPbi();
   }
-  /// Refresh params
-  componentWillUpdate() {
-    this.loadPbi()
+
+  @Watch("filters")
+  @Watch("idPbi")
+  @Watch("token")
+  @Watch("embedUrl")
+  addChild() {
+    this.loadPbi();
+  }
+
+  emitStatus() {
+    this.embeddedElement.on("rendered", () => {
+      this.status = "rendered";
+      this.changeStatus.emit("rendered");
+    });
+    this.embeddedElement.on("loaded", () => {
+      this.status = "loaded";
+      this.changeStatus.emit("loaded");
+    });
   }
 
   ///////////////////////
@@ -51,7 +69,8 @@ export class WizPowerbi implements ComponentInterface {
   ///////////////////////
   loadPbi() {
     if (this.validateConfig()) {
-      this.embed(this.config);
+      this.embed();
+      this.emitStatus();
     }
   }
 
@@ -59,20 +78,16 @@ export class WizPowerbi implements ComponentInterface {
   // Validations
   ///////////////////////
   validateConfig() {
-    const config = this.getConfig()
+    const config = this.getConfig();
     const errors = pbi.models.validateReportLoad(config);
     if (!this.token || !this.idPbi || !this.embedUrl) {
-      console.warn('required token, id and embedUrl')
-      return false
+      return false;
     }
     if (errors) {
-      console.log("config validation error", errors);
+      return;
     }
-    this.config = config
     return errors === undefined;
   }
-
-
 
   // Prepare params config powerbi
   private getConfig() {
@@ -85,33 +100,34 @@ export class WizPowerbi implements ComponentInterface {
       settings: {
         filterPaneEnabled: this.showFilterBar,
         navContentPaneEnabled: this.showMenuButton,
-        layoutType: 0
-      }
-    }
+        layoutType: 0,
+      },
+    };
 
     // has Filters
     if (this.filters) {
-      const values = newConfig
+      const values = newConfig;
       newConfig = {
         ...values,
-        filters: this.filters
-      }
+        filters: this.filters,
+      };
     }
 
     /// is Mobile
     const bodySize = document.body.getBoundingClientRect().width;
-    if (this.maxMobileSize && bodySize >= this.maxMobileSize) {
-      newConfig.settings.layoutType = pbi.models.LayoutType.MobilePortrait
+    if (this.maxMobileSize && this.maxMobileSize >= bodySize) {
+      newConfig.settings.layoutType = pbi.models.LayoutType.MobilePortrait;
     }
-    return newConfig
+    return newConfig;
   }
-
 
   ///////////////////////////////
   /// @events power-bi client
   ///////////////////////////////
-  embed(config: IEmbedConfiguration) {
+  embed() {
+    const config = this.getConfig();
     this.embeddedElement = powerbi.embed(this.contentPBI, config);
+
     if (this.onEmbedded) {
       this.onEmbedded(this.embeddedElement);
     }
@@ -121,7 +137,13 @@ export class WizPowerbi implements ComponentInterface {
   // Renderização do componente
   render() {
     return (
-      <div class="content-powerbi" ref={el => { this.contentPBI = el; }}></div>
+      <div
+        id="content-powerbi"
+        class={`pbi-status-${this.status}`}
+        ref={(el) => {
+          this.contentPBI = el;
+        }}
+      ></div>
     );
   }
 }
