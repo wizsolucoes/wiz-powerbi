@@ -7,29 +7,65 @@
 
   <script type="module" src="/build/wiz-powerbi.esm.js"></script>
   <script nomodule src="/build/wiz-powerbi.js"></script>
-  <style>
-    body {
-      min-height: 100vh;
-      min-width: 100vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    }
+  <style>
     wiz-powerbi {
       height: 800px;
-      width: 80vw;
+      width: 100%;
     }
   </style>
 
 </head>
 <body>
-  <wiz-powerbi
-    embed-url="_set_embed_url_"
-    id-pbi="_id_pbi_"
-    max-mobile-size="800"
-    token="_token_"
-  >
-  </wiz-powerbi>
+<div class="container mb-5">
+  <div class="pb-2 pt-4 text-center">
+    <h2>Bem Vindo</h2>
+    <p class="lead">Esse é o playground do wiz-powerbi</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-1">
+      <label for="firstName" x-text="foo" >ID Powerbi</label>
+      <input type="text" value="9d554bac-7620-4dde-9810-3f1b0926ff5c" class="form-control" id="id">
+    </div>
+    <div class="col-md-6 mb-1">
+      <label for="lastName">Embed-url</label>
+      <input type="text" class="form-control" id="embed-url" value="https://app.powerbi.com/reportEmbed?reportId=9d554bac-7620-4dde-9810-3f1b0926ff5c&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLUJSQVpJTC1TT1VUSC1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldCIsImVtYmVkRmVhdHVyZXMiOnsibW9kZXJuRW1iZWQiOnRydWV9fQ%3d%3d">
+    </div>
+    <div class="col-md-12 mb-1">
+      <label for="lastName">Token</label>
+      <input type="text" class="form-control" id="token" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2M0MTZhMmYtYTk4Ny00MzM3LWJiMGEtOTRlNTdjMWYzMmU3LyIsImlhdCI6MTYwMDQ2NTg3NywibmJmIjoxNjAwNDY1ODc3LCJleHAiOjE2MDA0Njk3NzcsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84UUFBQUFLelNsVk1GeVA1bi9ZM2FIOVRDdWlsZlEvTS9WcU5ieUJodlZOT0JyUHJBPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI1NmRkOGUwNi1hZjNiLTRiMWEtYTBlNC1iY2E5Nzk3ODZkMjYiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkFkbSBSZWRlIiwiZ2l2ZW5fbmFtZSI6IlBvd2VyQkkgVVNFUiIsImlwYWRkciI6IjQwLjExNC4xMTYuMTU4IiwibmFtZSI6IlBvd2VyQkkgVVNFUiBBZG0gUmVkZSIsIm9pZCI6IjlmZmZiN2NkLWZjOGYtNDZiNi1hYWI4LWE0NDE1NGU0ZmViOSIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS00MjA5Njc3ODA5LTM0NzE2MzU3MzEtMjc4MzM1MDExMS0zMTk3MyIsInB1aWQiOiIxMDAzMjAwMDdFNzQ0MjUwIiwicmgiOiIwLkFBQUFMMnBCZkllcE4wTzdDcFRsZkI4eTV3YU8zVlk3cnhwTG9PUzhxWGw0YlNZUEFOYy4iLCJzY3AiOiJBcHAuUmVhZC5BbGwgQ2FwYWNpdHkuUmVhZC5BbGwgRGFzaGJvYXJkLlJlYWQuQWxsIERhdGFmbG93LlJlYWQuQWxsIERhdGFzZXQuUmVhZC5BbGwgR2F0ZXdheS5SZWFkLkFsbCBSZXBvcnQuUmVhZC5BbGwgU3RvcmFnZUFjY291bnQuUmVhZC5BbGwgV29ya3NwYWNlLlJlYWQuQWxsIiwic3ViIjoiOFZGMFN6aVYyQlNJS0FwbFhLU3NxSXNDT0NLR2xmczZNTjVLU21uRmZDUSIsInRpZCI6IjdjNDE2YTJmLWE5ODctNDMzNy1iYjBhLTk0ZTU3YzFmMzJlNyIsInVuaXF1ZV9uYW1lIjoicGIuYWRtcmVkZUB3aXpzb2x1Y29lcy5jb20uYnIiLCJ1cG4iOiJwYi5hZG1yZWRlQHdpenNvbHVjb2VzLmNvbS5iciIsInV0aSI6ImRMeWhLTHdyY1UtclFodm1VZ3pCQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdfQ.VohIZ_owL_sDGe2XAs09iXumiKaEjyIHX6CaCbaDplXKT5XHTG_9HZc2F2EqCBQrlLha2DXswyq4WoG-NPX7W2U62_x-VnulBAa4WsYorvcVRJEuZOQk_G4tQyvJH4mv2zlTMo-nhcs0bZ9l2qzLVBUspbzeBHudYTDopPodKqlR9ZMTbfRQ6uNM4es7XFGHf6sO51rNLABESCvCdXZASAfPc6-V4AMGdY_s9fag8vcwWJnlYHvaw08gmlgjix7DfDPN-FS72916KaswWPpGrVtHZt8nWiKghqmik6Nf0OLLSGsZhvehRtbV08OPBML6Cy4lESiXNBLUdxiND7KTzQ">
+    </div>
+    <div class="col-md-12 mb-1">
+      <label for="lastName">Filtros</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" id="filter" rows="3"></textarea>
+      <button class="btn btn-primary mt-3 btn-lg btn-block" onclick="return foo();" type="submit">Enviar</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <wiz-powerbi id="webComponent"></wiz-powerbi>
+    </div>
+  </div>
+</div>
+
 </body>
+
+<script>
+
+  function foo() {
+    var wizPowerbi = document.getElementById('webComponent');
+    var id = document.getElementById('id')
+    var embedurl = document.getElementById('embed-url')
+    var token = document.getElementById('token')
+
+    // passando parametros
+    wizPowerbi.idPbi = id.value
+    wizPowerbi.embedUrl = embedurl.value
+    wizPowerbi.token = token.value
+
+  };
+
+</script>
 </html>
