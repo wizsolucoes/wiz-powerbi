@@ -1,6 +1,6 @@
 {
   "name": "@wizsolucoes/wiz-powerbi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Wiz powerBi é um componente para embedar os relatórios do powerBi",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
