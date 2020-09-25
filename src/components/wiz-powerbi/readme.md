@@ -13,6 +13,7 @@
 | `filters`        | --                 |             | `IFilter[]`                        | `undefined` |
 | `idPbi`          | `id-pbi`           |             | `string`                           | `undefined` |
 | `maxMobileSize`  | `max-mobile-size`  |             | `number`                           | `800`       |
+| `pageName`       | `page-name`        |             | `string`                           | `undefined` |
 | `showFilterBar`  | `show-filter-bar`  |             | `boolean`                          | `false`     |
 | `showMenuButton` | `show-menu-button` |             | `boolean`                          | `true`      |
 | `token`          | `token`            |             | `string`                           | `undefined` |

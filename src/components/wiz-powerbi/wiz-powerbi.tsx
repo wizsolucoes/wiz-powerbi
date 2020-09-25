@@ -28,7 +28,7 @@ export class WizPowerbi implements ComponentInterface {
   @Prop() showMenuButton: boolean = true;
   @Prop() filters: models.IFilter[];
   @Prop() maxMobileSize: number = 800;
-  @Prop() pageName: string
+  @Prop() pageName: string;
 
   // State has change
   @State() onEmbedded: (embeddedEl: any) => void;
@@ -106,7 +106,7 @@ export class WizPowerbi implements ComponentInterface {
     };
 
     // has Page Name
-    if(this.pageName) {
+    if (this.pageName) {
       newConfig.pageName = this.pageName;
     }
 

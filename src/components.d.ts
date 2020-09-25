@@ -5,13 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { models, } from "powerbi-client";
+import { models } from "powerbi-client";
 export namespace Components {
     interface WizPowerbi {
         "embedUrl": string;
         "filters": models.IFilter[];
         "idPbi": string;
         "maxMobileSize": number;
+        "pageName": string;
         "showFilterBar": boolean;
         "showMenuButton": boolean;
         "token": string;
@@ -37,6 +38,7 @@ declare namespace LocalJSX {
         "idPbi"?: string;
         "maxMobileSize"?: number;
         "onChangeStatus"?: (event: CustomEvent<string>) => void;
+        "pageName"?: string;
         "showFilterBar"?: boolean;
         "showMenuButton"?: boolean;
         "token"?: string;
