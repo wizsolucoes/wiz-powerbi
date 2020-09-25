@@ -61,9 +61,10 @@ Para testar o componente você pode usar esse o link abaixo e pegar os principai
 | filters   		| Não	| Object	| null 	| [Link filtros](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Filters)
 | token-type		| Não 	| Number 	| 0 	| |
 | type				| Não 	| string	| report||
-|show-filter-bar	| Não	| boolean	| false | Mostrar barra lateral de filtro|
+| show-filter-bar	| Não	| boolean	| false | Mostrar barra lateral de filtro|
 | show-menu-button 	| Não	| boolean	| true 	| Mostrar Menu no rodapé do relatório|
 | max-mobile-size 	| Não 	| Number	| 800	 | Carregar em modo mobile |
+| page-name             | Não   | string        | null  | Abrir uma página ou aba especifica | 
 
 
 ### filtros do powerbi
